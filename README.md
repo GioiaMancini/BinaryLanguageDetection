@@ -1,6 +1,9 @@
 # Binary Language Detection
 Binary Language Detection Machine Learning project
 
+This repository contains an implementatio of a binary language detection problem aimed at classifying sentences as either Italian or non-Italian. The proposed model is implemented in a Jupyter notebook that can be run locally or through Google Colaboratory. By downloading the dataset and running the cells, it is possible to train a new model and storing it in a pickle file, as well. The notebook includes data preprocessing, model selection and training, and performance evaluation. The trained model uses a supervised machine learning approach, utilizing the scikit-learn library and a GridSearchCV algorithm that enables the search for the best estimator for our task. The resulting model achieved high performance on the test set, with an accuracy score of 0.99, as well as strong precision, recall, and F1 scores.
+
+Additionally, a RESTful API is provided, which allows users to make a POST inference call. The final solution exposes the call to a service predict on port localhost:5000/predict via a web interface or curl command. The API enables the user to obtain predictions from the trained model, given a sentence input directly on the homepage or via a curl command with a json input.
 
 ## Dataset - Kaggle
 

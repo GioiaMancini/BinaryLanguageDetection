@@ -5,6 +5,10 @@ This repository contains an implementatio of a binary language detection problem
 
 Additionally, a RESTful API is provided, which allows users to make a POST inference call. The final solution exposes the call to a service predict on port localhost:5000/predict via a web interface or curl command. The API enables the user to obtain predictions from the trained model, given a sentence input directly on the homepage or via a curl command with a json input.
 
+To further enhance the usability of this project, a Dockerfile and a Docker image have been added to the repository. The Docker image allows users to easily deploy the language detection model without having to worry about setting up the necessary environment.
+
+# Usage - Machine Learning Model
+
 ## Dataset - Kaggle
 
 ### Prerequisites
@@ -60,3 +64,20 @@ drive.mount('/content/drive')
 !kaggle datasets download -d basilb2s/language-detection
 !unzip language-detection.zip
 ```
+# Deploy of the model
+
+The final solution has been deployed as local endpoint to expose a REST API (POST) inference call to a service predict at http://localhost:5000/predict.
+
+## Local usage
+
+In order to test the solution on your local machine, you can clone this repository and following these instructinos.
+
+1. Clone this repository to your local machine using: `git clone https://github.com/your-username/your-repository.git`
+2. Navigate to the root directory of the cloned repository using the command line interface.
+3. Install the required dependencies by running the following command: `pip install -r requirements.txt`
+4. Start the server by running: `python main.py`
+5. The server should start running and you should see the following message: `* Running on http://localhost:5000/ (Press CTRL+C to quit)`
+6. Now, you can open a web browser and navigate to `http://localhost:5000` to use the API via a web page, you should see a window like this:
+
+
+7. You can use a `curl` to make requests via the terminal.

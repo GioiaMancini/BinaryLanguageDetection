@@ -1,7 +1,7 @@
 # Binary Language Detection
 Binary Language Detection Machine Learning project
 
-This repository contains an implementatio of a binary language detection problem aimed at classifying sentences as either Italian or non-Italian. The proposed model is implemented in a Jupyter notebook that can be run locally or through Google Colaboratory. By downloading the dataset and running the cells, it is possible to train a new model and storing it in a pickle file, as well. The notebook includes data preprocessing, model selection and training, and performance evaluation. The trained model uses a supervised machine learning approach, utilizing the scikit-learn library and a GridSearchCV algorithm that enables the search for the best estimator for our task. The resulting model achieved high performance on the test set, with an accuracy score of 0.99, as well as strong precision, recall, and F1 scores.
+This repository contains an implementation of a Binary Language Detection problem aimed at classifying sentences as either Italian or non-Italian. The proposed model is implemented in a Jupyter notebook that can be run locally or through Google Colaboratory. By downloading the dataset and running the cells, it is possible to train a new model and storing it in a pickle file, as well. The notebook includes data preprocessing, model selection and training, and performance evaluation. The trained model uses a supervised machine learning approach, utilizing the scikit-learn library and a GridSearchCV algorithm that enables the search for the best estimator for our task. The resulting model achieved high performance on the test set, with an accuracy score of 0.99, as well as strong precision, recall, and F1 scores.
 
 Additionally, a RESTful API is provided, which allows users to make a POST inference call. The final solution exposes the call to a service predict on port localhost:5000/predict via a web interface or curl command. The API enables the user to obtain predictions from the trained model, given a sentence input directly on the homepage or via a curl command with a json input.
 
@@ -64,6 +64,24 @@ drive.mount('/content/drive')
 !kaggle datasets download -d basilb2s/language-detection
 !unzip language-detection.zip
 ```
+
+### ML model 
+
+Once you have downloaded the dataset and you have the right set-up, you can start exploring the text preprocessing stage, the model selection and the final model evaluation.
+
+#### Preprocessing and cleaning
+
+As you can see from the notebook, at first you have to import the required dependencies, which involve preprocessing and machine learning models' libraries. Then, you have to load the csv file of the dataset into a pandas DataFrame. Some functions for data visualization are described, here are some examples of the DataFrame visualization:
+
+|    | Text              |                   Language   |
+|---:|:------------------|:-----------------------------|
+|  0 | Nature, in the broadest sense, is the natural, physical, material world or universe.   | English    |
+|  1 | "Nature" can refer to the phenomena of the physical world, and also to life in general.| English    |
+|  2 | The study of nature is a large, if not the only, part of science.                      | English    |
+|  3 | Although humans are part of nature, human activity is often understood as a separate category from other natural phenomena.                                                                                    | English    |
+|  4 | [1] The word nature is borrowed from the Old French nature and is derived from the Latin word natura, or "essential qualities, innate disposition", and in ancient times, literally meant "birth".                | English    |
+
+
 # Deploy of the model
 
 The final solution has been deployed as local endpoint to expose a REST API (POST) inference call to a service predict at http://localhost:5000/predict.

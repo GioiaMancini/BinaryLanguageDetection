@@ -75,9 +75,14 @@ In order to test the solution on your local machine, you can clone this reposito
 1. Clone this repository to your local machine using: `git clone https://github.com/your-username/your-repository.git`
 2. Navigate to the root directory of the cloned repository using the command line interface.
 3. Install the required dependencies by running the following command: `pip install -r requirements.txt`
-4. Start the server by running: `python main.py`
+4. Start the server:
+  - you can run it through python command: `python main.py`
+  - or by using Uvicorn: `uvicorn main:app --reload`
+  Note that you can run it in a different port by: `uvicorn main:app --reload --port <int>`, specifying the port number.
 5. The server should start running and you should see the following message: `* Running on http://localhost:5000/ (Press CTRL+C to quit)`
 6. Now, you can open a web browser and navigate to `http://localhost:5000` to use the API via a web page, you should see a window like this:
+<img src="https://github.com/GioiaMancini/BinaryLanguageDetection/blob/main/webpage.jpg" width="420">
+
+7. You can use a `curl` to make requests via the terminal: ``
 
 
-7. You can use a `curl` to make requests via the terminal.

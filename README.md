@@ -3,7 +3,7 @@ Binary Language Detection Machine Learning project
 
 This repository contains an implementation of a Binary Language Detection problem aimed at classifying sentences as either Italian or non-Italian. The proposed model is implemented in a Jupyter notebook that can be run locally or through Google Colaboratory. By downloading the dataset and running the cells, it is possible to train a new model and storing it in a pickle file, as well. The notebook includes data preprocessing, model selection and training, and performance evaluation. The trained model uses a supervised machine learning approach, utilizing the scikit-learn library and a GridSearchCV algorithm that enables the search for the best estimator for our task. The resulting model achieved high performance on the test set, with an accuracy score of 0.99, as well as strong precision, recall, and F1 scores.
 
-Additionally, a RESTful API is provided, which allows users to make a POST inference call. The final solution exposes the call to a service predict on port localhost:5000/predict via a web interface or curl command. The API enables the user to obtain predictions from the trained model, given a sentence input directly on the homepage or via a curl command with a json input.
+Additionally, a RESTful API is provided, which allows users to make a POST inference call. The final solution exposes the call to a service predict on port `localhost:5000/predict` via a web interface or curl command. The API enables the user to obtain predictions from the trained model, given a sentence input directly on the homepage or via a curl command with a json input.
 
 To further enhance the usability of this project, a Dockerfile and a Docker image have been added to the repository. The Docker image allows users to easily deploy the language detection model without having to worry about setting up the necessary environment.
 
@@ -81,6 +81,24 @@ As you can see from the notebook, at first you have to import the required depen
 |  3 | Although humans are part of nature, human activity is often understood as a separate category from other natural phenomena.                                                                                    | English    |
 |  4 | [1] The word nature is borrowed from the Old French nature and is derived from the Latin word natura, or "essential qualities, innate disposition", and in ancient times, literally meant "birth".                | English    |
 
+Here you can see the number of sentences per language in the dataset:
+
+<img src="https://github.com/GioiaMancini/BinaryLanguageDetection/blob/main/docs/nSentencesPerLanguage.png" width="420">
+
+Here is the number of words per language in the dataset:
+
+<img src="https://github.com/GioiaMancini/BinaryLanguageDetection/blob/main/docs/nWordsPerLanguage.png" width="420">
+
+After visualizing information about the dataset, we have to perform data cleaning on the text data. In particular, we perform regex-based text cleaning operations, including removing special characters, symbols, numbers, URLs, html tags and extra large spaces. Then, the text is transformed to lowercase and finally a list of cleaned text is returned. After this process, the total number of words in the dataset goes from 202335 to 201905.
+
+#### Train and test split
+
+To perform our ML algorithms over our text data, we have to split the dataset into train and test sets. We define a `random_state=42` to allow reproducibility.
+The final data are split into 8269 sentences for train set and 2068 for test set.
+
+#### Model Selection
+
+When dealing with 
 
 # Deploy of the model
 

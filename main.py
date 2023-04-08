@@ -18,6 +18,7 @@ import scipy  # Required by the trained model
 from fastapi.templating import Jinja2Templates  # For rendering HTML templates
 from pydantic import BaseModel  # For defining the input data model
 import regex as re
+import uvicorn
 
 # Create a FastAPI app instance
 app = FastAPI()
@@ -60,6 +61,6 @@ async def detect_italian(corpus: isItalian):
     # Return the prediction as a JSON object
     return {'prediction': prediction.tolist()[0]}
 
-    # use Uvicorn to run the server on localhost:5000 port
-    if __name__ == "__main__":
-        uvicorn.run(app, host="0.0.0.0", port=5000)
+# use Uvicorn to run the server on localhost:5000 port
+if __name__ == "__main__":
+    uvicorn.run(app, host="127.0.0.1", port=5000)

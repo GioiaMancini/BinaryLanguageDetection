@@ -43,7 +43,7 @@ async def detect_italian(corpus: isItalian):
     data = corpus.dict()
     data_in = [data['text']]
     print(data_in)
-
+    
     special_chars = re.compile(r'[\.!@#$(),\n"%^*?\+\-\':;~`0-9\=\[\]]')
     urls = re.compile(r'http[s]?\://\S+|www\.\S+')
     htmls = re.compile(r'\s+')

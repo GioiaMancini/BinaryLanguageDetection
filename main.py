@@ -54,7 +54,7 @@ async def detect_italian(corpus: isItalian):
     data_in = [w.lower() for w in data_in]
 
     # Load the pre-trained SVM model
-    classifier = pickle.load(open('svm_ngram_classifier.pkl','rb'))
+    classifier = pickle.load(open('MultinomialNB_2023-04-08_01-18-39.pkl','rb'))
     # Use the trained model to make predictions on the input data
     prediction = classifier.predict(data_in)
     

@@ -24,7 +24,7 @@ In order to test the solution on your local machine, you can follow these instru
   Note that you can run it in a different port by: `uvicorn main:app --reload --port <int>`, specifying the port number.
 5. The server should start running and you should see the following message: `* Running on http://localhost:5000/ (Press CTRL+C to quit)`
 6. Now, you can open a web browser and navigate to `http://localhost:5000` to use the API via a web page, you should see a window like this:
-<img src="https://github.com/GioiaMancini/BinaryLanguageDetection/blob/main/webpage.jpg" width="420">
+<img src="https://github.com/GioiaMancini/BinaryLanguageDetection/blob/main/docs/webpage.jpg" width="420">
 
 7. You can use a `curl` to make requests via the terminal: 
 ```

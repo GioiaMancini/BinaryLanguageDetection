@@ -5,7 +5,7 @@ This repository contains an implementation of a Binary Language Detection proble
 
 You can directly try to detect the language of a sentence through a RESTful API, which allows to make a POST inference call. The final solution exposes the call to a service predict on port `localhost:5000/predict` via a web interface or curl command.
 
-To further enhance the usability of this project, a Dockerfile and a Docker image link on Docker Hub have been added to the repository. The Docker image allows users to easily deploy the language detection model without having to worry about setting up the necessary environment.
+To further enhance the usability of this project, a dockerfile and a Docker image [link](https://hub.docker.com/r/gioiamancini/binarylanguagedetection) on Docker Hub have been added to the repository. The Docker image allows users to easily deploy the language detection model without having to worry about setting up the necessary environment.
 
 # Deploy of the model
 
@@ -28,9 +28,19 @@ In order to test the solution on your local machine, you can follow these instru
 
 7. You can use a `curl` to make requests via the terminal: 
 ```
-curl -X "POST" "http://127.0.0.1:5000/predict" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"text\": \"questa è una frase in italiano!\"}"
+curl -X "POST" "http://127.0.0.1:5000/predict" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"text\": \"Is this an italian sentence?\"}"
 ```
+N.B.: If you want to test sentences with accented characters, please use a json file as the one provided in the main folder (`curl_request.json`).
 
+If you want to use the docker image, you can either build it from scratch given the provided dockerfile or you can directly use the one provided at: .
+To build the image:
+1. `docker build -t binarylanguagedetection .`
+3. `docker run -dp 5000:5000 -ti --name LanguageDetectionContainer binarylanguagedetection`
+
+Now you can test the model going to Docker Desktop>Containers>Ports and clicking on port 5000.
+
+In case you want to use pull the [image from Docker Hub](https://hub.docker.com/r/gioiamancini/binarylanguagedetection):
+`docker pull gioiamancini/binarylanguagedetection` and run it with: `docker run -dp 5000:5000 -ti gioiamancini/binarylanguagedetection`
 
 # Usage - Machine Learning Model
 

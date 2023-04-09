@@ -33,7 +33,7 @@ templates = Jinja2Templates(directory='')
 # GET HTTP method; # Define a root endpoint that returns the index.html template
 @app.get("/")
 async def root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse("home.html", {"request": request})
 
 
 # Define a predict endpoint that receives POST requests and returns predictions
@@ -54,7 +54,7 @@ async def detect_italian(corpus: isItalian):
     data_in = [w.lower() for w in data_in]
 
     # Load the pre-trained SVM model
-    classifier = pickle.load(open('MultinomialNB_2023-04-08_01-18-39.pkl','rb'))
+    classifier = pickle.load(open('Models/MultinomialNB_2023-04-09_20-58-01.pkl','rb'))
     # Use the trained model to make predictions on the input data
     prediction = classifier.predict(data_in)
     

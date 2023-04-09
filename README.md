@@ -1,11 +1,36 @@
 # Binary Language Detection
 Binary Language Detection Machine Learning project
 
-This repository contains an implementation of a Binary Language Detection problem aimed at classifying sentences as either Italian or non-Italian. The proposed model is implemented in a Jupyter notebook that can be run locally or through Google Colaboratory. By downloading the dataset and running the cells, it is possible to train a new model and storing it in a pickle file, as well. The notebook includes data preprocessing, model selection and training, and performance evaluation. The trained model uses a supervised machine learning approach, utilizing the scikit-learn library and a GridSearchCV algorithm that enables the search for the best estimator for our task. The resulting model achieved high performance on the test set, with an accuracy score of 0.99, as well as strong precision, recall, and F1 scores.
+This repository contains an implementation of a Binary Language Detection problem aimed at classifying sentences as either Italian or non-Italian. The proposed model is implemented in a Jupyter notebook that can be run locally or through Google Colaboratory. By downloading the dataset and running the cells, it is possible to train a new model and storing it in a pickle file, as well. The notebook includes data preprocessing, model selection and training, and performance evaluation. The trained model is selected with a GridSearchCV algorithm that enables the search for the best estimator for our task. The resulting model achieved high performance on the test set, with an accuracy score of 0.98, as well as strong precision, recall, and F1 scores.
 
-Additionally, a RESTful API is provided, which allows users to make a POST inference call. The final solution exposes the call to a service predict on port `localhost:5000/predict` via a web interface or curl command. The API enables the user to obtain predictions from the trained model, given a sentence input directly on the homepage or via a curl command with a json input.
+You can directly try to detect the language of a sentence through a RESTful API, which allows to make a POST inference call. The final solution exposes the call to a service predict on port `localhost:5000/predict` via a web interface or curl command.
 
-To further enhance the usability of this project, a Dockerfile and a Docker image have been added to the repository. The Docker image allows users to easily deploy the language detection model without having to worry about setting up the necessary environment.
+To further enhance the usability of this project, a Dockerfile and a Docker image link on Docker Hub have been added to the repository. The Docker image allows users to easily deploy the language detection model without having to worry about setting up the necessary environment.
+
+# Deploy of the model
+
+The final solution has been deployed as local endpoint to expose a REST API (POST) inference call to a service predict at http://localhost:5000/predict.
+
+## Local usage
+
+In order to test the solution on your local machine, you can follow these instructinos.
+
+1. Clone this repository to your local machine using: `git clone https://github.com/your-username/your-repository.git`
+2. Navigate to the root directory of the cloned repository using the command line interface.
+3. Install the required dependencies by running the following command: `pip install -r requirements.txt`
+4. Start the server:
+  - you can run it through python command: `python main.py`
+  - or by using Uvicorn: `uvicorn main:app --reload --port 5000`
+  Note that you can run it in a different port by: `uvicorn main:app --reload --port <int>`, specifying the port number.
+5. The server should start running and you should see the following message: `* Running on http://localhost:5000/ (Press CTRL+C to quit)`
+6. Now, you can open a web browser and navigate to `http://localhost:5000` to use the API via a web page, you should see a window like this:
+<img src="https://github.com/GioiaMancini/BinaryLanguageDetection/blob/main/webpage.jpg" width="420">
+
+7. You can use a `curl` to make requests via the terminal: 
+```
+curl -X "POST" "http://127.0.0.1:5000/predict" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"text\": \"questa è una frase in italiano!\"}"
+```
+
 
 # Usage - Machine Learning Model
 
@@ -100,25 +125,5 @@ The final data are split into 8269 sentences for train set and 2068 for test set
 
 When dealing with 
 
-# Deploy of the model
-
-The final solution has been deployed as local endpoint to expose a REST API (POST) inference call to a service predict at http://localhost:5000/predict.
-
-## Local usage
-
-In order to test the solution on your local machine, you can clone this repository and following these instructinos.
-
-1. Clone this repository to your local machine using: `git clone https://github.com/your-username/your-repository.git`
-2. Navigate to the root directory of the cloned repository using the command line interface.
-3. Install the required dependencies by running the following command: `pip install -r requirements.txt`
-4. Start the server:
-  - you can run it through python command: `python main.py`
-  - or by using Uvicorn: `uvicorn main:app --reload`
-  Note that you can run it in a different port by: `uvicorn main:app --reload --port <int>`, specifying the port number.
-5. The server should start running and you should see the following message: `* Running on http://localhost:5000/ (Press CTRL+C to quit)`
-6. Now, you can open a web browser and navigate to `http://localhost:5000` to use the API via a web page, you should see a window like this:
-<img src="https://github.com/GioiaMancini/BinaryLanguageDetection/blob/main/webpage.jpg" width="420">
-
-7. You can use a `curl` to make requests via the terminal: ``
 
 

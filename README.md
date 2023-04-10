@@ -7,15 +7,13 @@ You can directly try to detect the language of a sentence through a RESTful API,
 
 To further enhance the usability of this project, a dockerfile and a Docker image [link](https://hub.docker.com/r/gioiamancini/binarylanguagedetection) on Docker Hub have been added to the repository. The Docker image allows users to easily deploy the language detection model without having to worry about setting up the necessary environment.
 
-# Deploy of the model
+# Usage - REST API
 
 The final solution has been deployed as local endpoint to expose a REST API (POST) inference call to a service predict at http://localhost:5000/predict.
 
-## Local usage
-
 In order to test the solution on your local machine, you can follow these instructinos.
 
-1. Clone this repository to your local machine using: `git clone https://github.com/your-username/your-repository.git`
+1. Clone this repository to your local machine using: `git clone https://github.com/GioiaMancini/BinaryLanguageDetection.git`
 2. Navigate to the root directory of the cloned repository using the command line interface.
 3. Install the required dependencies by running the following command: `pip install -r requirements.txt`
 4. Start the server:

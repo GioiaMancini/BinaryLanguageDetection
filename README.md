@@ -29,8 +29,9 @@ In order to test the solution on your local machine, you can follow these instru
 curl -X "POST" "http://127.0.0.1:5000/predict" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"text\": \"Is this an italian sentence?\"}"
 ```
 N.B.: If you want to test sentences with accented characters, please use a json file as the one provided in the main folder (`curl_request.json`).
+N.B.: If you encounter any issue in running the server in your local machine (this solution has been developed and tested in Windows, so there could be conflicts in installed dependencies due to different OS environments), please refer to the following instruction and use the docker image provided at [this link](https://hub.docker.com/r/gioiamancini/binarylanguagedetection).
 
-If you want to use the docker image, you can either build it from scratch given the provided dockerfile or you can directly use the one provided at: .
+If you want to use the docker image, you can either build it from scratch given the provided dockerfile or you can directly use the one provided at [this link](https://hub.docker.com/r/gioiamancini/binarylanguagedetection).
 To build the image:
 1. `docker build -t binarylanguagedetection .`
 3. `docker run -dp 5000:5000 -ti --name LanguageDetectionContainer binarylanguagedetection`

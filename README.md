@@ -174,3 +174,13 @@ This is the resulting confusion matrix and classification report obtained with t
 
 The obtained results confirms that MultinomialNB is the best classifier for our task, considering the performed hyperparameters grid search.
 
+## Possible improvements
+
+We have seen how the chosen model is a good strategy for solving this binary classification task. However, in presence of a more complex task or a larger amount of data, we could choose a different approach.
+For instance, if a larger dataset is available, together with more computational resources, the development of a more advanced model can be taken into account. In particular, a state-of-the-art Transformer-based architecture could be implemented.
+Moreover, a more sophisticated data cleaning and embedding procedures could be employed, such as adding more features to help prediction, considering the chance of removing stop words. Also, since the data is imbalanced, SMOTE (Synthetic Minority Over-sampling Technique) or similar techniques could be tried to make the data more balanced.
+Considerations about memory, size and training/inference time efficiency could also make the result even more robust.
+
+Finally, considering the REST API architecture, several additional improvements could be considered. For instance, a more robust authentication process should be used, together with a json response involving also information about status and response codes to make the user aware of specific issues. Moreover, the possibility of predicting among a list of sentences or an uploaded text file should be implemented.
+
+

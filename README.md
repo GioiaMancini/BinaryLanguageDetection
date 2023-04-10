@@ -1,5 +1,5 @@
 # Binary Language Detection
-Binary Language Detection Machine Learning project
+Binary Language Detection - ML Assessment, Exercise 1
 
 This repository contains an implementation of a Binary Language Detection problem aimed at classifying sentences as either Italian or non-Italian. The proposed model is implemented in a Jupyter notebook that can be run locally or through Google Colaboratory. By downloading the dataset and running the cells, it is possible to train a new model and storing it in a pickle file, as well. The notebook includes data preprocessing, model selection and training, and performance evaluation. The trained model is selected with a GridSearchCV algorithm that enables the search for the best estimator for our task. The resulting model achieved high performance on the test set, with high accuracy and strong precision, recall, and F1 score.
 

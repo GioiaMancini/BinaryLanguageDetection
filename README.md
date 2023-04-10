@@ -26,7 +26,7 @@ In case you want to use pull the [image from Docker Hub](https://hub.docker.com/
 You can make the request by:
 1.  Using a `curl` via the terminal: 
 ```
-curl -X "POST" "http://127.0.0.1:5000/predict" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"text\": \"Is this an italian sentence?\"}"
+curl -X "POST" "http://127.0.0.1:5000/predict" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"text\": \"Is this an italian sentence?\", \"api_key\": \"apiKey1\"}"
 ```
 2. Using a `curl` request through a `curl_request.json` file:
 ```
@@ -51,7 +51,7 @@ If you want to build and test the REST API in your local environment, you can fo
 
 7. You can use a `curl` to make requests via the terminal: 
 ```
-curl -X "POST" "http://127.0.0.1:5000/predict" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"text\": \"Is this an italian sentence?\"}"
+curl -X "POST" "http://127.0.0.1:5000/predict" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"text\": \"Is this an italian sentence?\", \"api_key\": \"apiKey1\"}"
 ```
 or
 ```

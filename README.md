@@ -75,6 +75,7 @@ In case you want to use pull the [image from Docker Hub](https://hub.docker.com/
 
 1. You must have a Kaggle account.
 2. You must mount your drive in Colab.
+3. The instructions are also described in the [colab notebook](https://colab.research.google.com/drive/1ouDP5wbArsdPiVV1IzZUDojOW55zWTxq?usp=sharing).
 
 ### Download
 

@@ -101,7 +101,7 @@ drive.mount('/content/drive')
 
 ### ML model 
 
-Once you have downloaded the dataset and you have the right set-up, you can start exploring the text preprocessing stage, the model selection and the final model evaluation.
+Once you have downloaded the dataset and you have the right set-up, you can start exploring the notebook ([colab link](https://colab.research.google.com/drive/1ouDP5wbArsdPiVV1IzZUDojOW55zWTxq?usp=sharing)), involving the text preprocessing stage, the model selection and the final model evaluation.
 
 #### Preprocessing and cleaning
 

@@ -11,25 +11,7 @@ To further enhance the usability of this project, a dockerfile and a Docker imag
 
 The final solution has been deployed as local endpoint to expose a REST API (POST) inference call to a service predict at http://localhost:5000/predict.
 
-In order to test the solution on your local machine, you can follow these instructinos.
-
-1. Clone this repository to your local machine using: `git clone https://github.com/GioiaMancini/BinaryLanguageDetection.git`
-2. Navigate to the root directory of the cloned repository using the command line interface.
-3. Install the required dependencies by running the following command: `pip install -r requirements.txt`
-4. Start the server:
-  - you can run it through python command: `python main.py`
-  - or by using Uvicorn: `uvicorn main:app --reload --port 5000`
-  Note that you can run it in a different port by: `uvicorn main:app --reload --port <int>`, specifying the port number.
-5. The server should start running and you should see the following message: `* Running on http://localhost:5000/ (Press CTRL+C to quit)`
-6. Now, you can open a web browser and navigate to `http://localhost:5000` to use the API via a web page, you should see a window like this:
-<img src="https://github.com/GioiaMancini/BinaryLanguageDetection/blob/main/docs/webpage.jpg" width="420">
-
-7. You can use a `curl` to make requests via the terminal: 
-```
-curl -X "POST" "http://127.0.0.1:5000/predict" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"text\": \"Is this an italian sentence?\"}"
-```
-N.B.: If you want to test sentences with accented characters, please use a json file as the one provided in the main folder (`curl_request.json`).
-N.B.: If you encounter any issue in running the server in your local machine (this solution has been developed and tested in Windows, so there could be conflicts in installed dependencies due to different OS environments), please refer to the following instruction and use the docker image provided at [this link](https://hub.docker.com/r/gioiamancini/binarylanguagedetection).
+### Docker
 
 If you want to use the docker image, you can either build it from scratch given the provided dockerfile or you can directly use the one provided at [this link](https://hub.docker.com/r/gioiamancini/binarylanguagedetection).
 To build the image:
@@ -40,6 +22,44 @@ Now you can test the model going to Docker Desktop>Containers>Ports and clicking
 
 In case you want to use pull the [image from Docker Hub](https://hub.docker.com/r/gioiamancini/binarylanguagedetection):
 `docker pull gioiamancini/binarylanguagedetection` and run it with: `docker run -dp 5000:5000 -ti gioiamancini/binarylanguagedetection`
+
+You can make the request by:
+1.  Using a `curl` via the terminal: 
+```
+curl -X "POST" "http://127.0.0.1:5000/predict" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"text\": \"Is this an italian sentence?\"}"
+```
+2. Using a `curl` request through a `curl_request.json` file:
+```
+curl -X "POST" "http://127.0.0.1:5000/predict" -H "accept: application/json" -H "Content-Type: application/json" -d @curl_request.json
+```
+
+
+### Python or Uvicorn
+
+If you want to build and test the REST API in your local environment, you can follow these instructions.
+
+1. Clone this repository to your local machine using: `git clone https://github.com/GioiaMancini/BinaryLanguageDetection.git`
+2. Navigate to the root directory of the cloned repository using the command line interface.
+3. Install the required dependencies by running the following command: `pip install -r requirements.txt`
+4. Start the server:
+  - you can run it through python command: `python main.py`
+  - or by using Uvicorn: `uvicorn main:app --port 5000`
+  Note that you can run it in a different port by: `uvicorn main:app --port <int>`, specifying the port number.
+5. The server should start running and you should see the following message: `* Running on http://localhost:5000/ (Press CTRL+C to quit)`
+6. Now, you can open a web browser and navigate to `http://localhost:5000` to use the API via a web page, you should see a window like this:
+<img src="https://github.com/GioiaMancini/BinaryLanguageDetection/blob/main/docs/webpage.jpg" width="420">
+
+7. You can use a `curl` to make requests via the terminal: 
+```
+curl -X "POST" "http://127.0.0.1:5000/predict" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"text\": \"Is this an italian sentence?\"}"
+```
+or
+```
+curl -X "POST" "http://127.0.0.1:5000/predict" -H "accept: application/json" -H "Content-Type: application/json" -d @curl_request.json
+```
+N.B.: If you want to test sentences with accented characters, please use a json file as the one provided in the main folder (`curl_request.json`).
+N.B.: If you encounter any issue in running the server in your local machine (this solution has been developed and tested in Windows, so there could be conflicts in installed dependencies due to different OS environments), please refer to the following instruction and use the docker image provided at [this link](https://hub.docker.com/r/gioiamancini/binarylanguagedetection).
+
 
 # Usage - Machine Learning Model
 

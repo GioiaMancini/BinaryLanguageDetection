@@ -6,7 +6,8 @@
 
 # The second endpoint is a POST request to the /predict URL.
 # When a user submits a form on the homepage, the detect_italian function is called. 
-# This function loads a pre-trained SVM model from a pickle file, 
+# This function loads a pre-trained model from a pickle file,
+# check if a valid API key is given,
 # uses the model to make predictions on the user's input text, 
 # and returns the prediction as a JSON object.
 

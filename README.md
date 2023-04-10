@@ -123,15 +123,32 @@ Here is the number of words per language in the dataset:
 <img src="https://github.com/GioiaMancini/BinaryLanguageDetection/blob/main/docs/nWordsPerLanguage.png" width="420">
 
 After visualizing information about the dataset, we have to perform data cleaning on the text data. In particular, we perform regex-based text cleaning operations, including removing special characters, symbols, numbers, URLs, html tags and extra large spaces. Then, the text is transformed to lowercase and finally a list of cleaned text is returned. After this process, the total number of words in the dataset goes from 202335 to 201905.
+Note that in presence of a more complex problem or more resources available, a more sophisticated data cleaning and embedding procedure should have been taken into account.
 
 #### Train and test split
 
-To perform our ML algorithms over our text data, we have to split the dataset into train and test sets. We define a `random_state=42` to allow reproducibility.
-The final data are split into 8269 sentences for train set and 2068 for test set.
+To perform our ML algorithms over our text data, we have to split the dataset into train and test sets. We define a `random_state=23` to allow reproducibility.
+The final data are split into 8269 sentences for train set and 2068 for test set. 
 
 #### Model Selection
 
-When dealing with 
+In order to select the most suitable ML algorithm for our task, we perform a grid search for hyperparameters tuning among different algorithms using 5-Fold Cross-Validation with scoring F1. The resulting best model is the Multinomial Naive Bayes classifier. For technical details please refer to the ML_Exercise1.ipyng notebook.
+
+### Results
+
+This is the resulting confusion matrix and classification report obtained with the returned best model:
+
+<img src="https://github.com/GioiaMancini/BinaryLanguageDetection/blob/main/docs/confusion_matrix_MNB.png" width="420">
 
 
+|    |  precision  |  recall  | f1-score |  support  |
+|---:|:------------|:---------|:---------|:----------|
+| 0  |    0.999    |   0.999  |   0.999  |    1925   |
+| 1  |    0.986    |   0.993  |   0.990  |     143   |
+|    |             |          |          |           |
+|  accuracy    |         |        |   0.999 |    2068|
+|   macro avg |     0.993 |    0.996 |    0.994 |     2068|
+|weighted avg   |   0.999  |   0.999 |    0.999|      2068|
+
+The obtained results confirms that MultinomialNB is the best classifier for our task, considering the performed hyperparameters grid search.
 

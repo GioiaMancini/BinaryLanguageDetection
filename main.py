@@ -12,7 +12,7 @@
 
 
 # Import necessary libraries and modules
-from fastapi import FastAPI, Form, Request  # FastAPI framework
+from fastapi import FastAPI, Form, Request, HTTPException
 import pickle  # For loading trained model
 import scipy  # Required by the trained model
 from fastapi.templating import Jinja2Templates  # For rendering HTML templates
@@ -26,9 +26,13 @@ app = FastAPI()
 # Define the input data model using Pydantic
 class isItalian(BaseModel):
     text: str
+    api_key: str = None
 
 # Create a Jinja2Templates instance and set the templates directory
 templates = Jinja2Templates(directory='')
+
+# Valid API keys
+API_KEYS = ['apiKey1', 'apiKey2']
 
 # GET HTTP method; # Define a root endpoint that returns the index.html template
 @app.get("/")
@@ -39,10 +43,14 @@ async def root(request: Request):
 # Define a predict endpoint that receives POST requests and returns predictions
 @app.post('/predict')
 async def detect_italian(corpus: isItalian):
-    # Extract the text data from the input model
+    # Extract the text and api_key data from the input model
     data = corpus.dict()
     data_in = data['text']
-    #print(data_in)
+    api_key = data['api_key']
+    
+    # Check if a valid API key is provided
+    if api_key not in API_KEYS:
+        raise HTTPException(status_code=400, detail="Invalid API key")
     
     data_in = re.sub(r'[\.!@#$(),\n"%^*?\+\-\':;~`0-9\=\[\]]', ' ', data_in) # removing special characters, symbols and numbers
     data_in = re.sub(r'http[s]?\://\S+|www\.\S+', ' ', data_in) # removing URLs

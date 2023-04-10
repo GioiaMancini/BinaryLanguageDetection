@@ -80,7 +80,8 @@
           }
         });
         const prediction = await response.json();
-        predictionDiv.textContent = `Is italian? ${prediction.prediction}`;
+        predictionDiv.textContent = `Is Italian? ${prediction.prediction ? 'Yes' : 'No'}`;
+        
       });
     </script>
   </body>

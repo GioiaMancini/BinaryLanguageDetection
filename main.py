@@ -41,22 +41,19 @@ async def root(request: Request):
 async def detect_italian(corpus: isItalian):
     # Extract the text data from the input model
     data = corpus.dict()
-    data_in = [data['text']]
-    print(data_in)
+    data_in = data['text']
+    #print(data_in)
     
-    special_chars = re.compile(r'[\.!@#$(),\n"%^*?\+\-\':;~`0-9\=\[\]]')
-    urls = re.compile(r'http[s]?\://\S+|www\.\S+')
-    htmls = re.compile(r'\s+')
-
-    #data_in = [special_chars.sub('', w) for w in data_in]
-    #data_in = [urls.sub('', w) for w in data_in]
-    #data_in = [htmls.sub('', w) for w in data_in]
-    data_in = [w.lower() for w in data_in]
+    data_in = re.sub(r'[\.!@#$(),\n"%^*?\+\-\':;~`0-9\=\[\]]', ' ', data_in) # removing special characters, symbols and numbers
+    data_in = re.sub(r'http[s]?\://\S+|www\.\S+', ' ', data_in) # removing URLs
+    data_in = re.sub(r'<.*?>', ' ', data_in) # removing html tags
+    data_in = re.sub(r'\s+'," ", data_in) # removing extra large spaces
+    data_in = data_in.lower()
 
     # Load the pre-trained SVM model
-    classifier = pickle.load(open('Models/MultinomialNB_2023-04-09_20-58-01.pkl','rb'))
+    classifier = pickle.load(open('MultinomialNB_2023-04-09_20-58-01.pkl','rb'))
     # Use the trained model to make predictions on the input data
-    prediction = classifier.predict(data_in)
+    prediction = classifier.predict([data_in])
     
     # Return the prediction as a JSON object
     return {'prediction': prediction.tolist()[0]}
